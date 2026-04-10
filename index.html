@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Agency | 您在北美的全维度运输专家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAF8F5;
+      --bg-warm: #F3EFE8;
+      --bg-dark: #1B2A3B;
+      --bg-card: #FFFFFF;
+      --bg-dark-card: #243447;
+      --text: #1A1A1A;
+      --text-mid: #555;
+      --text-light: #8A8A8A;
+      --text-on-dark: #E8DED0;
+      --navy: #1B2A3B;
+      --navy-mid: #2C405E;
+      --red: #C8102E;
+      --red-light: #E8294A;
+      --gold: #D4A843;
+      --gold-light: #E8C06A;
+      --border: #E0D9CF;
+      --border-dark: #2E4058;
+      --shadow-sm: 0 2px 12px rgba(27,42,59,0.08);
+      --shadow-md: 0 8px 32px rgba(27,42,59,0.12);
+      --shadow-lg: 0 20px 60px rgba(27,42,59,0.16);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ─── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    nav.scrolled { background: rgba(250,248,245,0.97); box-shadow: var(--shadow-sm); }
+
+    .logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .logo-mark {
+      width: 42px; height: 42px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 900; font-size: 20px;
+      position: relative;
+    }
+    .logo-mark::after {
+      content: ''; position: absolute; inset: -2px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--gold));
+      z-index: -1; opacity: 0.6; filter: blur(5px);
+    }
+    .logo-name { font-size: 17px; font-weight: 700; color: var(--navy); }
+    .logo-name span { color: var(--red); }
+    .logo-tagline { font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-top: 1px; }
+
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-links a {
+      color: var(--text-mid); text-decoration: none;
+      font-size: 14px; padding: 6px 16px; border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); background: rgba(27,42,59,0.06); }
+    .nav-cta {
+      background: var(--red) !important; color: #fff !important;
+      font-weight: 600 !important;
+      padding: 8px 22px !important;
+      box-shadow: 0 4px 16px rgba(200,16,46,0.3);
+      transition: all 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--red-light) !important; box-shadow: 0 6px 24px rgba(200,16,46,0.4) !important; transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; overflow: hidden;
+      padding-top: 70px;
+    }
+
+    /* Background pattern */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,16,46,0.04), transparent),
+        radial-gradient(ellipse 50% 40% at 30% 70%, rgba(212,168,67,0.05), transparent);
+      pointer-events: none;
+    }
+
+    .hero-wave {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--bg-warm), transparent);
+    }
+
+    .hero-left { padding: 80px 48px 80px 48px; position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,16,46,0.08);
+      border: 1px solid rgba(200,16,46,0.2);
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 13px; color: var(--red);
+      font-weight: 600; margin-bottom: 28px;
+      opacity: 0;
+      animation: fade-up 0.8s 0.1s forwards;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900; line-height: 1.15;
+      color: var(--navy); margin-bottom: 8px;
+      opacity: 0;
+      animation: fade-up 0.8s 0.25s forwards;
+    }
+    .hero-title-sub {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 700; color: var(--red); margin-bottom: 24px;
+      opacity: 0;
+      animation: fade-up 0.8s 0.35s forwards;
+    }
+
+    .hero-desc {
+      font-size: 16px; color: var(--text-mid);
+      max-width: 480px; margin-bottom: 36px; line-height: 1.9;
+      opacity: 0;
+      animation: fade-up 0.8s 0.45s forwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-up 0.8s 0.55s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red); color: #fff;
+      padding: 14px 30px; border-radius: 10px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(200,16,46,0.3);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,16,46,0.4); }
+
+    .btn-navy {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy); color: #fff;
+      padding: 14px 30px; border-radius: 10px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-mid);
+      padding: 13px 28px; border-radius: 10px;
+      font-size: 15px; font-weight: 500; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* Hero right - service icons */
+    .hero-right {
+      position: relative; padding: 80px 48px 80px 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-visual {
+      width: 100%; max-width: 480px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      animation: fade-up 1s 0.4s forwards;
+    }
+    .hero-visual-title {
+      font-size: 13px; color: var(--text-light);
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 24px; font-family: 'DM Sans', sans-serif;
+    }
+
+    .route-map {
+      background: linear-gradient(135deg, #EEF2F7, #F8F9FB);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .route-map::before {
+      content: '';
+      position: absolute; top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(200,16,46,0.08);
+    }
+    .route-flow {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px;
+    }
+    .route-node {
+      flex: 1; text-align: center;
+    }
+    .route-node-flag { font-size: 32px; margin-bottom: 6px; }
+    .route-node-city { font-size: 12px; font-weight: 700; color: var(--navy); }
+    .route-node-label { font-size: 10px; color: var(--text-light); }
+    .route-arrow {
+      font-size: 20px; color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-services-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .hero-service-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px;
+      font-size: 13px; color: var(--text-mid); font-weight: 500;
+    }
+    .hero-service-chip .check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(200,16,46,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--red); flex-shrink: 0;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTION ────────────────────────────────────────── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; width: 24px; height: 2px; background: var(--red);
+    }
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700; line-height: 1.2; color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--text-mid);
+      max-width: 540px; line-height: 1.9;
+    }
+    .section-sub.center { margin: 0 auto; }
+
+    /* ─── PAIN POINTS ───────────────────────────────────── */
+    #pain {
+      background: var(--navy);
+      color: var(--text-on-dark);
+      position: relative; overflow: hidden;
+    }
+    #pain::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,16,46,0.15), transparent);
+    }
+
+    #pain .section-label { color: var(--gold); }
+    #pain .section-label::before { background: var(--gold); }
+    #pain .section-title { color: #fff; }
+    #pain .section-sub { color: rgba(232,222,208,0.7); }
+
+    .pain-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .pain-left { }
+    .pain-question {
+      font-size: 15px; font-weight: 600; color: rgba(232,222,208,0.6);
+      margin-bottom: 20px;
+    }
+    .pain-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .pain-item:last-child { border-bottom: none; }
+    .pain-x { color: var(--red); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .pain-item p { font-size: 15px; color: rgba(232,222,208,0.8); }
+
+    .pain-right {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 36px;
+    }
+    .pain-right-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;
+    }
+    .pain-right-sub { font-size: 14px; color: rgba(232,222,208,0.6); margin-bottom: 28px; }
+
+    .solution-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .sol-chip {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(212,168,67,0.15);
+      border: 1px solid rgba(212,168,67,0.3);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 13px; color: var(--gold-light); font-weight: 600;
+    }
+
+    .pain-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red);
+      color: #fff; padding: 12px 24px;
+      border-radius: 10px; font-size: 14px; font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(200,16,46,0.4);
+      transition: all 0.3s;
+    }
+    .pain-cta:hover { background: var(--red-light); transform: translateY(-2px); }
+
+    /* ─── SERVICES ───────────────────────────────────────── */
+    #services { background: var(--bg); }
+
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-label::before { display: none; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; max-width: 1100px; margin: 0 auto;
+    }
+
+    .svc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all 0.35s;
+      cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .svc-card:hover {
+      border-color: var(--navy);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .svc-card:hover::before { opacity: 1; }
+
+    .svc-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px;
+    }
+    .svc-icon-red { background: rgba(200,16,46,0.08); }
+    .svc-icon-gold { background: rgba(212,168,67,0.1); }
+    .svc-icon-navy { background: rgba(27,42,59,0.08); }
+
+    .svc-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .svc-desc { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+
+    /* ─── SMART SYSTEM ──────────────────────────────────── */
+    #smart {
+      background: var(--bg-warm);
+      position: relative; overflow: hidden;
+    }
+    #smart::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(200,16,46,0.05);
+    }
+
+    .smart-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .smart-left { }
+    .smart-title-highlight {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 20px;
+    }
+    .smart-title-highlight span { color: var(--red); }
+
+    .smart-steps { margin-top: 32px; }
+    .smart-step {
+      display: flex; gap: 16px; margin-bottom: 24px;
+    }
+    .smart-step-num {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--red); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+    }
+    .smart-step-content h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .smart-step-content p { font-size: 13px; color: var(--text-mid); }
+
+    .smart-right { position: relative; }
+    .smart-demo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+    .smart-demo-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .smart-demo-title { font-size: 15px; font-weight: 700; color: var(--navy); }
+    .smart-badge {
+      background: rgba(200,16,46,0.08); color: var(--red);
+      border: 1px solid rgba(200,16,46,0.2);
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+    }
+
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: 14px;
+      padding: 32px; text-align: center;
+      background: var(--bg);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .upload-zone:hover { border-color: var(--red); background: rgba(200,16,46,0.03); }
+    .upload-icon { font-size: 36px; margin-bottom: 12px; }
+    .upload-zone h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .upload-zone p { font-size: 12px; color: var(--text-light); }
+    .upload-zone small { font-size: 11px; color: var(--text-light); }
+
+    .smart-results { margin-top: 20px; }
+    .smart-result-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px; margin-bottom: 8px;
+    }
+    .smart-result-icon { font-size: 20px; }
+    .smart-result-info h5 { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .smart-result-info p { font-size: 11px; color: var(--text-light); }
+    .smart-result-status {
+      margin-left: auto;
+      padding: 3px 10px; border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+    }
+    .status-done { background: rgba(16,185,129,0.12); color: #059669; }
+    .status-ai { background: rgba(200,16,46,0.08); color: var(--red); }
+
+    /* ─── TARGETS ────────────────────────────────────────── */
+    #targets { background: var(--bg); }
+    .targets-header { text-align: center; margin-bottom: 56px; }
+    .targets-header .section-label { justify-content: center; }
+    .targets-header .section-label::before { display: none; }
+
+    .targets-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; max-width: 1100px; margin: 0 auto;
+    }
+    .target-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative; overflow: hidden;
+      transition: all 0.35s;
+    }
+    .target-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(212,168,67,0.12); transform: translateY(-4px); }
+    .target-icon { font-size: 40px; margin-bottom: 20px; }
+    .target-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; font-family: 'Noto Serif SC', serif; }
+    .target-desc { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+    .target-tag {
+      display: inline-block; margin-top: 16px;
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+      background: rgba(212,168,67,0.1); color: var(--gold);
+      border: 1px solid rgba(212,168,67,0.2);
+    }
+
+    /* ─── PROMISE ───────────────────────────────────────── */
+    #promise {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      position: relative; overflow: hidden;
+    }
+    #promise::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(200,16,46,0.08), transparent);
+    }
+    .promise-wrap { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .promise-header { text-align: center; margin-bottom: 56px; }
+    #promise .section-label { color: var(--gold); }
+    #promise .section-label::before { background: var(--gold); }
+    #promise .section-title { color: #fff; }
+    #promise .section-sub { color: rgba(232,222,208,0.6); margin: 0 auto; }
+
+    .promise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .promise-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .promise-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(212,168,67,0.3); }
+    .promise-icon { font-size: 40px; margin-bottom: 16px; }
+    .promise-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .promise-desc { font-size: 14px; color: rgba(232,222,208,0.6); line-height: 1.8; }
+
+    /* ─── SPECIAL SERVICES ──────────────────────────────── */
+    #special { background: var(--bg-warm); }
+    .special-header { text-align: center; margin-bottom: 56px; }
+    .special-header .section-label { justify-content: center; }
+    .special-header .section-label::before { display: none; }
+
+    .special-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; max-width: 1100px; margin: 0 auto;
+    }
+    .special-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: all 0.3s;
+    }
+    .special-card:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .special-num {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--navy); color: #fff;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .special-content h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .special-content p { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── FLOW ───────────────────────────────────────────── */
+    #flow { background: var(--bg); }
+    .flow-header { text-align: center; margin-bottom: 56px; }
+    .flow-header .section-label { justify-content: center; }
+    .flow-header .section-label::before { display: none; }
+
+    .flow-steps {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 1000px; margin: 0 auto;
+      gap: 0;
+    }
+    .flow-step {
+      flex: 1; text-align: center;
+      position: relative;
+    }
+    .flow-step::after {
+      content: '→'; position: absolute;
+      right: -12px; top: 28px;
+      font-size: 20px; color: var(--gold);
+      z-index: 1;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin: 0 auto 14px;
+      box-shadow: 0 4px 16px rgba(27,42,59,0.2);
+    }
+    .flow-step-label { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .flow-step-sub { font-size: 12px; color: var(--text-light); }
+
+    /* ─── CONTACT ───────────────────────────────────────── */
+    #contact {
+      background: var(--navy);
+      color: var(--text-on-dark);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 30% 50%, rgba(200,16,46,0.12), transparent);
+    }
+    .contact-wrap { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .contact-wrap .section-label { color: var(--gold); }
+    .contact-wrap .section-label::before { background: var(--gold); }
+    .contact-wrap .section-title { color: #fff; }
+    .contact-wrap .section-sub { color: rgba(232,222,208,0.7); margin: 0 auto 40px; }
+
+    .contact-cards {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-bottom: 32px;
+    }
+    .contact-wechat {
+      grid-column: 1 / -1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex; align-items: center; gap: 32px;
+      transition: all 0.3s;
+    }
+    .contact-wechat:hover { background: rgba(255,255,255,0.1); border-color: rgba(7,193,96,0.4); }
+    .contact-wechat-qr {
+      width: 120px; height: 120px; flex-shrink: 0;
+      border-radius: 12px; overflow: hidden;
+      border: 3px solid rgba(7,193,96,0.4);
+      background: #fff;
+    }
+    .contact-wechat-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .contact-wechat-info { flex: 1; }
+    .contact-wechat-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; color: rgba(7,193,96,0.9);
+      text-transform: uppercase; letter-spacing: 1px;
+      font-weight: 700; margin-bottom: 8px;
+    }
+    .contact-wechat-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .contact-wechat-desc { font-size: 13px; color: rgba(232,222,208,0.6); line-height: 1.7; }
+    .contact-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: left;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(212,168,67,0.3); }
+    .contact-card-icon { font-size: 28px; margin-bottom: 12px; }
+    .contact-card-label { font-size: 11px; color: rgba(232,222,208,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .contact-card-value { font-size: 14px; color: #fff; font-weight: 600; line-height: 1.6; }
+
+    .contact-cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: #0F1A27;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand p { font-size: 13px; color: rgba(232,222,208,0.4); margin-top: 14px; line-height: 1.8; max-width: 280px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: rgba(232,222,208,0.8); margin-bottom: 14px; }
+    .footer-col a {
+      display: block; font-size: 13px; color: rgba(232,222,208,0.4);
+      text-decoration: none; margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: rgba(232,222,208,0.8); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(232,222,208,0.3);
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-right { display: none; }
+      .pain-layout { grid-template-columns: 1fr; }
+      .smart-layout { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .targets-grid { grid-template-columns: repeat(2, 1fr); }
+      .promise-grid { grid-template-columns: repeat(2, 1fr); }
+      .special-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .flow-steps { flex-wrap: wrap; gap: 20px; }
+      .flow-step::after { display: none; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 72px 20px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-left { padding: 60px 20px 60px; }
+      #hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .targets-grid { grid-template-columns: 1fr; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .special-grid { grid-template-columns: 1fr; }
+      .contact-cards { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-mark">P</div>
+    <div>
+      <div class="logo-name">Prime <span>Agency</span></div>
+      <div class="logo-tagline">您在北美的全维度运输专家</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#pain">核心痛点</a></li>
+    <li><a href="#services">核心服务</a></li>
+    <li><a href="#smart">智能换单</a></li>
+    <li><a href="#targets">目标客户</a></li>
+    <li><a href="#special">特色服务</a></li>
+    <li><a href="#contact" class="nav-cta">联系我们</a></li>
+  </ul>
+  <div class="hamburger" onclick="const l=document.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex';l.style.flexDirection='column';l.style.position='absolute';l.style.top='70px';l.style.left='0';l.style.right='0';l.style.background='rgba(250,248,245,0.98)';l.style.padding='20px';l.style.borderBottom='1px solid var(--border)';">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ───────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      美加本土物流 · 中文服务支持
+    </div>
+    <h1 class="hero-title">Prime Agency</h1>
+    <div class="hero-title-sub">您在北美的全维度运输专家</div>
+    <p class="hero-desc">
+      从中国出发，直达美国和加拿大全境。Prime Agency 为中国发货客户提供清关、换单、仓储、派送等全链路落地服务——中文沟通、体系成熟、执行有保障。
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        立即咨询合作 →
+      </a>
+      <a href="#services" class="btn-outline">
+        了解核心服务
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-visual-title">// 核心服务</div>
+
+      <div class="route-map">
+        <div class="route-flow">
+          <div class="route-node">
+            <div class="route-node-flag">🇨🇳</div>
+            <div class="route-node-city">中国</div>
+            <div class="route-node-label">主要港口出发</div>
+          </div>
+          <div class="route-arrow">✈️ 📦 🚢</div>
+          <div class="route-node">
+            <div class="route-node-flag">🇺🇸</div>
+            <div class="route-node-city">美国</div>
+            <div class="route-node-label">清关 + 派送</div>
+          </div>
+          <div class="route-arrow">+</div>
+          <div class="route-node">
+            <div class="route-node-flag">🇨🇦</div>
+            <div class="route-node-city">加拿大</div>
+            <div class="route-node-label">清关 + 派送</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-services-grid">
+        <div class="hero-service-chip"><div class="check">✓</div>整箱运输</div>
+        <div class="hero-service-chip"><div class="check">✓</div>拼箱服务</div>
+        <div class="hero-service-chip"><div class="check">✓</div>空运货物</div>
+        <div class="hero-service-chip"><div class="check">✓</div>电商物流</div>
+        <div class="hero-service-chip"><div class="check">✓</div>清关服务</div>
+        <div class="hero-service-chip"><div class="check">✓</div>派送服务</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave"></div>
+</section>
+
+<!-- ─── PAIN ───────────────────────────────────────────── -->
+<section id="pain">
+  <div class="pain-layout">
+    <div class="pain-left">
+      <div class="section-label">您是否正面临这些挑战？</div>
+      <h2 class="section-title reveal">北美物流的<br>最后一公里<br>为何总是最难的？</h2>
+      <p class="section-sub reveal reveal-delay-1">
+        当货物抵达北美港口，很多问题才刚刚开始。
+      </p>
+
+      <div class="pain-question reveal reveal-delay-2">这些问题，是否也曾让您头疼？</div>
+      <div class="pain-item reveal reveal-delay-2">
+        <div class="pain-x">✕</div>
+        <p>清关慢、换单难、流程不透明，货物卡在港口出不来</p>
+      </div>
+      <div class="pain-item reveal reveal-delay-3">
+        <div class="pain-x">✕</div>
+        <p>客户每天催件，后台却查不到真实追踪状态</p>
+      </div>
+      <div class="pain-item reveal reveal-delay-3">
+        <div class="pain-x">✕</div>
+        <p>快递延误、派送失控、客户投诉不断</p>
+      </div>
+      <div class="pain-item reveal reveal-delay-4">
+        <div class="pain-x">✕</div>
+        <p>北美落地执行团队难找，沟通成本高，出了问题没人管</p>
+      </div>
+    </div>
+
+    <div class="pain-right reveal reveal-delay-2">
+      <div class="pain-right-title">Prime Agency 解决方案</div>
+      <div class="pain-right-sub">帮您打通北美物流"最后一公里"</div>
+
+      <div class="solution-chips">
+        <div class="sol-chip">⚡ 换单快</div>
+        <div class="sol-chip">🛃 清关稳</div>
+        <div class="sol-chip">🚚 派送准</div>
+        <div class="sol-chip">😊 客户满意</div>
+      </div>
+
+      <p style="font-size: 14px; color: rgba(232,222,208,0.7); margin-bottom: 24px; line-height: 1.8;">
+        选择 Prime，我们不只是执行方——我们愿做您在北美的"海外办公室"。<br>
+        让您的客户省心，让您的运营团队轻松，让您的品牌更有竞争力。
+      </p>
+      <a href="#contact" class="pain-cta">
+        了解如何合作 →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ───────────────────────────────────────── -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-label">核心服务</div>
+    <h2 class="section-title reveal">全链路北美落地服务<br>一站式承接</h2>
+    <p class="section-sub center reveal reveal-delay-1">
+      覆盖美加主要港口、城市和清关点，提供中文服务支持，沟通无障碍、执行有保障。
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-icon svc-icon-red">🚢</div>
+      <div class="svc-title">整箱运输 FCL</div>
+      <div class="svc-desc">解决到港无人跟进、派送预约难、交仓慢的问题。Prime 全程代操作，您只需坐等货物送达。</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-icon svc-icon-gold">📦</div>
+      <div class="svc-title">拼箱服务 LCL</div>
+      <div class="svc-desc">解决货量小、出货频繁、进仓杂、流程乱、进度不可控的问题。批次清晰，轨迹可查。</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-3">
+      <div class="svc-icon svc-icon-navy">✈️</div>
+      <div class="svc-title">空运货物</div>
+      <div class="svc-desc">解决货值高、时间紧、清关效率低、文件要求杂的问题。高效清关，紧急货物也能从容应对。</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-icon svc-icon-red">🛒</div>
+      <div class="svc-title">电商物流</div>
+      <div class="svc-desc">解决尾程派送爆仓、平台履约时间紧、客户催件压力大的问题。支持 FBA 送仓、平台代发。</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-icon svc-icon-gold">🛃</div>
+      <div class="svc-title">清关服务</div>
+      <div class="svc-desc">解决不同口岸规则差异、文件易出错、报关慢的问题。专业团队覆盖美加主要清关点。</div>
+    </div>
+    <div class="svc-card reveal reveal-delay-3">
+      <div class="svc-icon svc-icon-navy">🚚</div>
+      <div class="svc-title">派送服务</div>
+      <div class="svc-desc">解决提货后流程断层、司机沟通难、派送无追踪的问题。全程可监控、可追溯、可回溯。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SMART SYSTEM ───────────────────────────────────── -->
+<section id="smart">
+  <div class="smart-layout">
+    <div class="smart-left">
+      <div class="section-label">智能换单系统</div>
+      <h2 class="smart-title-highlight reveal">
+        让跨境物流<br>更<span>高效</span>、更<span>准确</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-1">
+        Prime Agency 智能换单系统，用 AI 替代人工录入——批量上传、自动识别、秒级处理，让您的北美清关从第一天起就快人一步。
+      </p>
+
+      <div class="smart-steps">
+        <div class="smart-step reveal reveal-delay-1">
+          <div class="smart-step-num">1</div>
+          <div class="smart-step-content">
+            <h4>批量上传 PDF 提单</h4>
+            <p>支持批量上传 PDF 提单文件，系统自动识别并提取核心信息</p>
+          </div>
+        </div>
+        <div class="smart-step reveal reveal-delay-2">
+          <div class="smart-step-num">2</div>
+          <div class="smart-step-content">
+            <h4>AI 高精度识别</h4>
+            <p>精度和速度远超传统 OCR 识别工具，准确率行业领先</p>
+          </div>
+        </div>
+        <div class="smart-step reveal reveal-delay-3">
+          <div class="smart-step-num">3</div>
+          <div class="smart-step-content">
+            <h4>自动生成清关/派送单据</h4>
+            <p>系统自动生成标准化单据，支持人工审核，确保万无一失</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="smart-right">
+      <div class="smart-demo-card reveal reveal-delay-2">
+        <div class="smart-demo-header">
+          <div class="smart-demo-title">📄 智能换单系统</div>
+          <div class="smart-badge">Powered by AI</div>
+        </div>
+
+        <div class="upload-zone">
+          <div class="upload-icon">📎</div>
+          <h4>拖拽上传 PDF 提单</h4>
+          <p>支持批量上传，单次最多 20 份</p>
+          <small>支持格式：PDF / JPG / PNG</small>
+        </div>
+
+        <div class="smart-results">
+          <div class="smart-result-item">
+            <div class="smart-result-icon">📋</div>
+            <div class="smart-result-info">
+              <h5>MBL_20260409_001.pdf</h5>
+              <p>已识别：发货人、收货人、件数、毛重</p>
+            </div>
+            <div class="smart-result-status status-done">✓ 已处理</div>
+          </div>
+          <div class="smart-result-item">
+            <div class="smart-result-icon">🤖</div>
+            <div class="smart-result-info">
+              <h5>HBL_20260409_002.pdf</h5>
+              <p>自动生成清关单据 · 派送单据</p>
+            </div>
+            <div class="smart-result-status status-ai">AI 生成</div>
+          </div>
+          <div class="smart-result-item">
+            <div class="smart-result-icon">📊</div>
+            <div class="smart-result-info">
+              <h5>运单 PA202604009</h5>
+              <p>清关 + 派送 流程已启动</p>
+            </div>
+            <div class="smart-result-status status-done">✓ 完成</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TARGETS ────────────────────────────────────────── -->
+<section id="targets">
+  <div class="targets-header">
+    <div class="section-label">我们想为你解决你的事</div>
+    <h2 class="section-title reveal">为谁服务？</h2>
+    <p class="section-sub center reveal reveal-delay-1">
+      Prime Agency 的每一位客户，都是我们在北美最优先保障的合作伙伴。
+    </p>
+  </div>
+
+  <div class="targets-grid">
+    <div class="target-card reveal reveal-delay-1">
+      <div class="target-icon">🏭</div>
+      <div class="target-title">外贸出口企业</div>
+      <div class="target-desc">我们理解您在意时效、追踪和沟通效率。Prime 可以成为您在北美的可靠落地执行团队，全流程交由我们处理，您更省心。</div>
+      <div class="target-tag">省心型合作</div>
+    </div>
+    <div class="target-card reveal reveal-delay-2">
+      <div class="target-icon">🛒</div>
+      <div class="target-title">跨境电商卖家</div>
+      <div class="target-desc">我们了解您对尾程时效的要求，也理解客户催件的压力。Prime 不仅快，还提供系统化追踪和及时反馈，让您的销量更安心。</div>
+      <div class="target-tag">时效型合作</div>
+    </div>
+    <div class="target-card reveal reveal-delay-3">
+      <div class="target-icon">🌐</div>
+      <div class="target-title">国内货代公司</div>
+      <div class="target-desc">您不需要在北美建团队，也不必重新谈渠道。Prime 就是您在北美的"落地代理"，让您的服务半径更广、能力更强。</div>
+      <div class="target-tag">战略型 Partner</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROMISE ─────────────────────────────────────────── -->
+<section id="promise">
+  <div class="promise-wrap">
+    <div class="promise-header">
+      <div class="section-label">服务承诺</div>
+      <h2 class="section-title reveal">我们承诺的，我们一定做到</h2>
+      <p class="section-sub center reveal reveal-delay-1">
+        长期合作是 Prime Agency 的基因——我们关注的不只是这一次交付，而是与您一起走更远的路。
+      </p>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-icon">🗣️</div>
+        <div class="promise-title">中英文服务团队</div>
+        <div class="promise-desc">时差响应无障碍，沟通零障碍。无论何时何地，您都能找到懂您的人。</div>
+      </div>
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-icon">🌐</div>
+        <div class="promise-title">全境可操作</div>
+        <div class="promise-desc">覆盖美加主要节点，所有环节均可监控、可追踪、可回溯。货物走到哪，您就知道哪。</div>
+      </div>
+      <div class="promise-card reveal reveal-delay-3">
+        <div class="promise-icon">🤝</div>
+        <div class="promise-title">长期合作关系</div>
+        <div class="promise-desc">注重长期合作，稳定靠谱、风控成熟。Prime 愿做您北美物流的长期战略伙伴。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SPECIAL ─────────────────────────────────────────── -->
+<section id="special">
+  <div class="special-header">
+    <div class="section-label">特色服务</div>
+    <h2 class="section-title reveal">不只是基础服务<br>这些是 Prime 的加分项</h2>
+  </div>
+
+  <div class="special-grid">
+    <div class="special-card reveal reveal-delay-1">
+      <div class="special-num">01</div>
+      <div class="special-content">
+        <h4>提单分单服务</h4>
+        <p>免费提供提单出分单服务，操作灵活无额外负担</p>
+      </div>
+    </div>
+    <div class="special-card reveal reveal-delay-1">
+      <div class="special-num">02</div>
+      <div class="special-content">
+        <h4>全境物流覆盖</h4>
+        <p>覆盖美加港口与内陆清关派送，网络全面无死角</p>
+      </div>
+    </div>
+    <div class="special-card reveal reveal-delay-2">
+      <div class="special-num">03</div>
+      <div class="special-content">
+        <h4>AMS / ISF / EMF 代申报</h4>
+        <p>代为申报，确保合规准时，避免清关延误</p>
+      </div>
+    </div>
+    <div class="special-card reveal reveal-delay-2">
+      <div class="special-num">04</div>
+      <div class="special-content">
+        <h4>FMC 无船承运人注册</h4>
+        <p>协助注册 FMC NVOCC，提供注册指导，确保合规无误</p>
+      </div>
+    </div>
+    <div class="special-card reveal reveal-delay-3">
+      <div class="special-num">05</div>
+      <div class="special-content">
+        <h4>HBL 问题协助处理</h4>
+        <p>支持换单、信息更正及资料补全，全程协助</p>
+      </div>
+    </div>
+    <div class="special-card reveal reveal-delay-3">
+      <div class="special-num">06</div>
+      <div class="special-content">
+        <h4>出单操作支持</h4>
+        <p>提供流程指引与协助，配套 Smart 换单系统代操作</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FLOW ───────────────────────────────────────────── -->
+<section id="flow">
+  <div class="flow-header">
+    <div class="section-label">服务流程</div>
+    <h2 class="section-title reveal">全链路可追踪<br>从发货到签收，每一步都清晰</h2>
+  </div>
+
+  <div class="flow-steps reveal reveal-delay-1">
+    <div class="flow-step">
+      <div class="flow-circle">🇨🇳</div>
+      <div class="flow-step-label">中国发货</div>
+      <div class="flow-step-sub">装柜出港</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle">📄</div>
+      <div class="flow-step-label">提单上传</div>
+      <div class="flow-step-sub">系统接收</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle">🤖</div>
+      <div class="flow-step-label">智能换单</div>
+      <div class="flow-step-sub">AI 自动处理</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle">🛃</div>
+      <div class="flow-step-label">美加清关</div>
+      <div class="flow-step-sub">专业清关团队</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle">🚚</div>
+      <div class="flow-step-label">末端派送</div>
+      <div class="flow-step-sub">全境可达</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-circle">✅</div>
+      <div class="flow-step-label">签收完成</div>
+      <div class="flow-step-sub">全程可追踪</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-label">联系我们</div>
+    <h2 class="section-title reveal">开启您的北美物流<br>新体验</h2>
+    <p class="section-sub reveal reveal-delay-1">
+      无论您是寻求稳定运力，还是希望提升客户体验——我们的团队将根据您的业务场景，定制专属合作方案。
+    </p>
+
+    <div class="contact-cards reveal reveal-delay-2">
+      <div class="contact-card">
+        <div class="contact-card-icon">📧</div>
+        <div class="contact-card-label">商务邮箱</div>
+        <div class="contact-card-value">
+          <br>
+          cherry@usaprimeagency.com
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📞</div>
+        <div class="contact-card-label">商务对接热线</div>
+        <div class="contact-card-value">+1 626 608-7766</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">🇺🇸</div>
+        <div class="contact-card-label">美国地址</div>
+        <div class="contact-card-value">17595 Almahurst Road, Suite 209<br>City of Industry, CA 91748</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">🇨🇦</div>
+        <div class="contact-card-label">加拿大地址</div>
+        <div class="contact-card-value">800 West Pender Street, Suite 615<br>Vancouver, BC V6C 2V6</div>
+      </div>
+    </div>
+
+    <div class="contact-wechat reveal reveal-delay-2">
+      <div class="contact-wechat-qr">
+        <img src="wechat-qr.jpeg" alt="微信联系 Prime Agency">
+      </div>
+      <div class="contact-wechat-info">
+        <div class="contact-wechat-label">💚 扫码添加商务微信</div>
+        <div class="contact-wechat-title">添加 Cherry 微信，直接沟通</div>
+        <div class="contact-wechat-desc">
+          扫码添加商务负责人微信，获取即时报价、舱位信息和专属合作方案。<br>
+          备注"Prime合作"，优先通过。
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cta-row reveal reveal-delay-3">
+      <a href="mailto:cherry@usaprimeagency.com" class="btn-primary" style="padding: 16px 36px; font-size: 16px;">
+        📧 发送邮件咨询
+      </a>
+      <a href="tel:+16266087766" class="btn-navy" style="padding: 16px 36px; font-size: 16px;">
+        📞 立即致电
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="logo-mark" style="width: 36px; height: 36px; font-size: 16px;">P</div>
+        <div>
+          <div class="logo-name" style="font-size: 15px;">Prime <span>Agency</span></div>
+        </div>
+      </div>
+      <p>Prime Agency 是一家扎根美国和加拿大本土多年的国际物流服务商，专为中国发货客户提供清关、换单、仓储、派送等全链路落地服务。</p>
+    </div>
+    <div class="footer-col">
+      <h4>核心服务</h4>
+      <a href="#services">整箱运输 FCL</a>
+      <a href="#services">拼箱服务 LCL</a>
+      <a href="#services">空运货物</a>
+      <a href="#services">电商物流</a>
+      <a href="#services">清关服务</a>
+      <a href="#services">派送服务</a>
+    </div>
+    <div class="footer-col">
+      <h4>特色服务</h4>
+      <a href="#special">提单分单服务</a>
+      <a href="#smart">智能换单系统</a>
+      <a href="#special">AMS/ISF 申报</a>
+      <a href="#special">FMC 注册协助</a>
+      <a href="#special">HBL 问题处理</a>
+    </div>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <a href="mailto:cherry@usaprimeagency.com">cherry@usaprimeagency.com</a>
+      <a href="tel:+16266087766">+1 626 608-7766</a>
+      <a href="#">关于我们</a>
+      <a href="#">新闻动态</a>
+      <a href="#">加入我们</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Prime Agency. All rights reserved.</span>
+    <span>您在北美的全维度运输专家</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
